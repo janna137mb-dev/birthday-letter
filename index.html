@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>letter💗</title>
+    <style>
+        /* 1. Pink Rosy Romantic Background */
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #FFF0F5 0%, #FFD1DC 100%);
+            color: #4A4A4A;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+        }
+
+        /* The floating hearts background canvas */
+        canvas { 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            z-index: 1; /* Behind text */
+            pointer-events: none; 
+            opacity: 0; /* Hidden at first */
+            transition: opacity 1.5s ease-in;
+        }
+
+        /* 2. Fixed Music Player Surrounded with Hearts */
+        .audio-container {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 240, 245, 0.9); /* Blends with pink bg */
+            padding: 20px 0;
+            text-align: center;
+            border-bottom: 1px solid #FFB7C5;
+            z-index: 100; /* Stays on top of everything */
+        }
+
+        .player-decoration-wrapper {
+            position: relative;
+            display: inline-block;
+            background: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(255, 105, 180, 0.4);
+        }
+
+        .player-decoration-wrapper::before {
+            content: '💗';
+            position: absolute;
+            left: -15px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.3rem;
+        }
+        
+        .player-decoration-wrapper::after {
+            content: '💗';
+            position: absolute;
+            right: -15px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.3rem;
+        }
+
+        /* 3. Letter Layout & Space for Scrolling */
+        .letter-container {
+            position: relative;
+            z-index: 10; /* Keeps text completely on top of hearts */
+            width: 90%;
+            max-width: 600px;
+            margin-top: 180px; /* Space so fixed player doesn't block text */
+            margin-bottom: 600px; /* Generous spacing for a smooth exit roll */
+            padding: 20px;
+            line-height: 2.2;
+            font-size: 1.25rem;
+            text-align: left; /* Make container text align left */
+        }
+
+        /* Container designed to anchor your title positionally */
+        .title-block-wrapper {
+            width: 100%;
+            margin-bottom: 2em;
+            position: relative;
+            height: 50px; 
+        }
+
+        /* 4. The Intro Title (Calculated purely through transforms for butter-smooth movement) */
+        #zoom-title {
+            color: #dc476f;
+            font-size: 2.6rem;
+            margin: 0;
+            white-space: nowrap;
+            position: absolute;
+            left: 0;
+            top: 0;
+            
+            /* Hidden at start */
+            opacity: 0; 
+            
+            /* Keeps scale and coordinate anchor point locked to the top-left layout point */
+            transform-origin: left top;
+            transition: transform 2.0s cubic-bezier(0.25, 1, 0.5, 1), opacity 1.2s ease-in-out;
+        }
+
+        /* The main text paragraphs */
+        .letter-container p {
+            margin-bottom: 2em;
+            opacity: 0.9;
+            text-indent: 40px; /* Automatically indents the first word of every paragraph */
+        }
+
+        /* Initially hidden class for the body of the letter */
+        #letter-content {
+            opacity: 0;
+            transition: opacity 1.5s ease-in;
+        }
+
+        /* Class to fade the text in after the zoom ends */
+        .show-content {
+            opacity: 1 !important;
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="mainCanvas"></canvas>
+
+    <div class="audio-container">
+        <p style="margin: 0 0 10px 0; font-style: italic; color: #dc476f;">Press play to read along 💗</p>
+        <div class="player-decoration-wrapper">
+            <audio id="voiceAudio" controls src="letteraudio.mpeg"></audio>
+        </div>
+    </div>
+
+    <div class="letter-container">
+        <div class="title-block-wrapper">
+            <h1 id="zoom-title">Dear my beautiful baby boy,</h1>
+        </div>
+        
+        <div id="letter-content">
+            <p>My beautiful boy, whose essence feels like yellow—the color of warmth, whom I could melt and swim in the liquid gold of his presence.</p>
+
+            <p>I spent so long wondering how to initiate the perfect start for the perfect man, searching for words worthy enough to hold all that you are, but every path led me back to your mesmerizing eyes.</p>
+
+            <p>The moment I looked into your eyes, I was captured by your brown gaze. Every glance from you felt like an espresso kiss lingering my soul in the most beautiful way. There is comfort in those eyes of your eyes, as if autumn lives within them. In their shade, I find peace, and in their warmth, I find home. If I could brief it into one sentence, looking into your eyes made me feel like stepping into heaven my baby 💗</p>
+
+            <p>Your smile is gentle as a soft breeze and warm as sunrays. It makes my own smile bloom like the spring does to flowers. Your laughter enriches my soul in ways words cannot suffice.</p>
+
+            <p>Your voice—my favorite sound in the world, sinks into my body like a warm bath, tickling my ears as softly as the wind, and wrapping my heart with love. I could listen to you talk forever and still crave one more word from you.</p>
+
+            <p>The way you smile, the way you speak, the tenderness you carry so effortlessly—it makes me wonder how I could be worthy of love as beautiful as yours.</p>
+
+            <p>My heart is so full of you that I can hardly call it my own. Your love fills my heart to the brim and blooms inside me like endless pink blossoms.</p>
+
+            <p>When I am with you, I forget how to think. It’s like my brain disposes itself 😂 because it knows you will guide me hbb 💗</p>
+
+            <p>I’m so attached to you I accidentally almost trip and call people your name 😂 I sometimes bal7a2 nafsy before yelling bahaaaaa or walaaaa when someone rage baits me 😂</p>
+
+            <p>You know when we video call and you’re looking away, I steal those moments to admire you. I get so lost in your eyes and watch your mouth soften into that angelic curve of your lips. I would admire you for a lifetime w 3mri mashba3 mennak ya ro7y 🥹💗</p>
+
+            <p>I love when you admire me during our calls and rest your face on your palm keda. It makes me feel so loveddd and pretty.</p>
+
+            <p>My name has never sounded more beautiful when it leaves your sweet mouth. The way you say my name “ Jannah “ with your cute accent drifts my mind away. I love every name you call me: baby, ro7y, 2lby, 3mri, hbbti, hbb, sugar buns, 3solty, dalo3ty, barbie, mozzety, janniti. I have a whole note for all the nicknames you ever called me 😂 Each one of them sounds like a love letter when it leaves your soft pink looking lips 🫠</p>
+
+            <p>I love how you notice every tiny detail in my pictures and talk about it. And how you ask for my voice and my photos when you miss me. It’s so hot my man admitting he misses me 😩</p>
+
+            <p>B7b when you tease me by mocking my words and my accent—mokt2eba, ga3ana, makarona—and when you say, “Fen el ع?” “ You always eat the letters keda ? " I love when we fight about the word sha7at and you be like “ sha7addd, say after me ,ddd “ 😂😂</p>
+
+            <p>Competing over who loves the other more is one of my favourite daily habits. How each one of us tries to level on the other 😂 and say badoob feek and ba3sha2ak, and how whoever says bamoot feek first automatically wins 😂 it’s our little cute thingie 💗</p>
+
+            <p>I am so addicted to the way your lips move when you talk, the way your hands go everywhere keda when you’re explaining something. You are so effortlessly adorable ya baby. So ineffably describable 😍</p>
+
+            <p>Bamoot bamoot when you are on cam and explaining something to me, I be inside me like “ hmmmm please don’t stop talking ya baby ”.</p>
+
+            <p>I love when you contain me when I’m sad and tell me, “Let me make you feel better baby,” and somehow always know exactly what to say, and how you never fail to understand me even when my thoughts tumble out like a silly little girl.</p>
+
+            <p>I love how you make me so shy and turn my face into a roasted tomato 🍅😂 I love how gently you care for me, how you treat me like your little baby, and how you bring out the bbg in me.</p>
+
+            <p>I love the way you say, “I don’t know,” in almost every situation. It is unbearably cute, and how you randomly wear your robe as a jacket in winter 😂 it’s so bahaa random.</p>
+
+            <p>Love when you tell me b7bk in a voice note or a call 💗💗 betetla3 3sal moot men bo2ak 😩</p>
+
+            <p>Nothing brightens my day than when you send me random pictures of you and voice notes with sotak el7elw. Love when you ramble about random stuff till there’s nothing left to say, then you go silent a bit keda then laugh and say, “mmm ma3rafsh b7bk.”</p>
+
+            <p>Love how we call for hours and still be sad that we’re hanging up 😂 I can never ever get enough of you 💗 spending hours with you feel like few minutes. You’re the person I wanna spend the rest of my life with.</p>
+
+            <p>When the stars come to the sky, I always hear your voice notes before I sleep. They calm my thoughts, warm my body, and make me fall asleep like a little baby.</p>
+
+            <p>Your name always finds its way into the smallest corners of my day. I find myself mumbling ur name and writing your name to test my pen. I catch myself admiring your pictures too through the day without realizing it 🤭</p>
+
+            <p>I love how you know what to say in every situation, how your voice softens when you speak to me, and how you make feel entirely safe with you.</p>
+
+            <p>I love when you say ooo so excitedly keda when I do something, you’re my biggest motivator baby 🥹</p>
+
+            <p>Love when you scold me if I cry or don’t eat well 😂</p>
+
+            <p>I so so love how emotional and caring you are honey. I never seen you act rude or get mad at anyone. You are always so kind and perfect keda 💗</p>
+
+            <p>You are a true man in this generation, a man with the finest soul this world could ever know, with the gentlest heart and the most beautiful smile. The world is just better because you exist in it ya 2lby 💗</p>
+
+            <p>I can never forget our date the way you looked at me so in love then smiled that pretty smile of yours and looked away 🫠🫠🫠. It's one of the most beautiful things you ever done to me my love 💗💗</p>
+
+            <p>Lastly, I’d like you to know that I love you so much that I'd take my earrings off when we cuddle so they don’t stab you.</p>
+
+            <p>Ilysm I’d move your hair out of your face so it doesn’t bother you.</p>
+             
+            <p>Ilysm I’d take off my rings before holding your hand so they don’t hurt your pretty hands dol 💗💗💗</p>
+
+            <p>Ilysm I’d steal ur hoodies just to smell like uuuu 😩💗</p>
+
+            <p>Ilysm I’d keep your favourite snacks in my bag, so my baby wouldn’t be hungry.</p>
+
+            <p>Ilysm I’d tie my hair up when we sleep together so it doesn't get in your face ya 3mri 💗</p>
+
+            <p>Ilysm that when you’re anxious I would whisper in your ears to calm down while I rub your thigh 💗</p>
+
+            <p>Ilysm I’d wake up at night just to kiss you and make sure you’re tucked so you don’t catch a cold 🥺 my lil babyy you areeee awwwhhh 💗💗💗</p>
+
+            <p>Ilysm, I’d warm my hands before touching you, so you don’t feel cold.</p>
+
+            <p>Ilysm I’d take care of you after a long day, help you shower, feed you with my hands, massage your tired cute body, and just pamper you 💗</p>
+
+            <p>Ilysm I'd notice the slightest change in your smile, pull you close to me, let you rest your head on me, and help you let it out while I run my fingers through your adorable curls 💗💗💗</p>
+
+            <p>Enta my Bahaa, the true essence of my beauty.</p>
+
+            <p>The night cannot shine without its stars, and you are the brightest star in my world.</p>
+
+            <p>I cannot wait for the day when our little "Crystal" will be running in our home, wrapped in the love we built together. You were right choosing the name “Crystal”, because she will be a rare treasure, just like her dada.</p>
+
+            <!-- This forces BOTH lines to stay completely flat on the left with NO indents -->
+            <p style="text-indent: 0px !important; margin-bottom: 0.3em;">Until the day I can hold you in my arms,</p>
+            <p style="text-indent: 0px !important; margin-bottom: 3em;">I will keep your sim tray safe with me.</p>
+
+            <!-- This empty paragraph adds that perfect extra blank line space you want -->
+            <p style="margin-bottom: 2em; text-indent: 0;"></p>
+
+            <p style="text-indent: 0px; margin-bottom: 0.5em;">To be your wife one day isa,</p>
+            <p style="text-indent: 40px; margin-bottom: 0.5em;">Forever obsessed with you 💗</p>
+            <p style="text-indent: 90px; font-weight: bold; color: #dc476f; margin-bottom: 2em;">Jannetak💗</p>
+
+            <!-- EXTRA POSTSCRIPT NOTE SECTION -->
+            <hr style="border: 0; border-top: 1px dashed #FFB7C5; margin-top: 4em; margin-bottom: 2em;">
+            
+            <p style="text-indent: 0px !important; font-style: italic; font-size: 1.15rem; color: #b83b5e; margin-bottom: 1em;">
+                Oh and B2ollak: <br> ana mesh falla7a 😂 and no I don’t think I can hang up our calls, I guess I’ll have to let you do it everytime 😝 and that day when you hung in my face and laughed like crazy? That wasn’t funny at all, mashy? 😒🔪
+            </p>
+        
+
+            <br><p style="text-indent: 0px !important; font-style: italic; font-size: 1.15rem; color: #b83b5e; margin-bottom: 2em;">
+                <strong>B7bk sm ya ro7y ana,</strong><br>
+                 mmmwwaaah 😘😘😘
+            </p>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('mainCanvas');
+        const ctx = canvas.getContext('2d');
+        const audio = document.getElementById('voiceAudio');
+        const zoomTitle = document.getElementById('zoom-title');
+        const letterContent = document.getElementById('letter-content');
+        
+        let hearts = [];
+        let introFinished = false;
+        let animationActive = false;
+
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resize);
+        resize();
+
+        // Smart Heart Engine (Keeps the center mostly clear)
+        class FloatingHeart {
+            constructor() {
+                this.reset();
+                this.y = canvas.height + Math.random() * 500; 
+            }
+            reset() {
+                const laneChoice = Math.random();
+                if (laneChoice < 0.45) {
+                    this.x = Math.random() * (canvas.width * 0.25);
+                } else if (laneChoice < 0.90) {
+                    this.x = canvas.width - (Math.random() * (canvas.width * 0.25));
+                } else {
+                    this.x = (canvas.width * 0.25) + Math.random() * (canvas.width * 0.5);
+                }
+
+                this.y = canvas.height + 20;
+                this.size = Math.random() * 6 + 4; 
+                this.speed = Math.random() * 0.8 + 0.4;
+                this.velX = (Math.random() - 0.5) * 0.2;
+                
+                if (this.x > canvas.width * 0.25 && this.x < canvas.width * 0.75) {
+                    this.opacity = Math.random() * 0.15 + 0.05; 
+                } else {
+                    this.opacity = Math.random() * 0.6 + 0.3; 
+                }
+
+                const colors = ['#ff69b4', '#9370db', '#ffb6c1', '#da70d6'];
+                this.color = colors[Math.floor(Math.random() * colors.length)];
+            }
+            draw() {
+                ctx.save();
+                ctx.globalAlpha = this.opacity;
+                ctx.shadowBlur = 8;
+                ctx.shadowColor = this.color;
+                ctx.fillStyle = this.color;
+                drawHeartShape(this.x, this.y, this.size);
+                ctx.restore();
+            }
+            update() {
+                this.y -= this.speed;
+                this.x += this.velX;
+                if (this.y < -20) this.reset();
+            }
+        }
+
+        function drawHeartShape(x, y, size) {
+            ctx.beginPath();
+            const topCurveHeight = size * 0.3;
+            ctx.moveTo(x, y + topCurveHeight);
+            ctx.bezierCurveTo(x, y, x - size / 2, y, x - size / 2, y + topCurveHeight);
+            ctx.bezierCurveTo(x - size / 2, y + (size + topCurveHeight) / 2, x, y + (size + topCurveHeight) / 2, x, y + size);
+            ctx.bezierCurveTo(x, y + (size + topCurveHeight) / 2, x + size / 2, y + (size + topCurveHeight) / 2, x + size / 2, y + topCurveHeight);
+            ctx.bezierCurveTo(x + size / 2, y, x, y, x, y + topCurveHeight);
+            ctx.closePath(); 
+            ctx.fill();
+        }
+
+        for (let i = 0; i < 60; i++) {
+            hearts.push(new FloatingHeart());
+        }
+
+        // --- TIME-LOCKED TRACKING ENGINE ---
+        // Ties scroll directly to your voice timeline so background tabs/sleep modes can't twist the speed.
+        let scrollStartOffset = 0; 
+        const speedConstant = 8.8; // This value sets the baseline speed pace.
+
+        // Keeps track if you manually scroll/swipe the layout
+        window.addEventListener('scroll', () => {
+            if (!audio.paused && introFinished) {
+                scrollStartOffset = window.scrollY - (audio.currentTime * speedConstant);
+            }
+        }, { passive: true });
+
+        function masterLoop() {
+            if (!animationActive) return;
+
+            // 1. Render Background Hearts
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            hearts.forEach(h => { 
+                h.update(); 
+                h.draw(); 
+            });
+
+            // 2. Real-Time Math Lock (Forces page to keep up completely linearly)
+            if (introFinished && !audio.paused) {
+                let timeBasedScrollY = scrollStartOffset + (audio.currentTime * speedConstant);
+                window.scrollTo(0, timeBasedScrollY);
+            }
+
+            requestAnimationFrame(masterLoop);
+        }
+
+        audio.addEventListener('play', () => {
+            if (!animationActive) {
+                canvas.style.opacity = "1";
+                animationActive = true;
+                masterLoop();
+            }
+
+            if (!introFinished) {
+                const naturalRect = zoomTitle.getBoundingClientRect();
+                const naturalWidth = naturalRect.width;
+                const naturalHeight = naturalRect.height;
+                
+                const moveX = (window.innerWidth / 2) - naturalRect.left - ((naturalWidth * 1.5) / 2);
+                const moveY = (window.innerHeight / 2) - naturalRect.top - ((naturalHeight * 1.5) / 2);
+
+                zoomTitle.style.opacity = "1";
+                zoomTitle.style.transform = `translate(${moveX}px, ${moveY}px) scale(1.5)`;
+                
+                setTimeout(() => {
+                    zoomTitle.style.transform = "translate(-40px, 0) scale(1)";
+                    
+                    setTimeout(() => {
+                        letterContent.classList.add('show-content');
+                        scrollStartOffset = window.scrollY;
+                        introFinished = true;
+                    }, 1500);
+                }, 2500);
+            }
+        });
+    </script>
+</body>
+</html>
